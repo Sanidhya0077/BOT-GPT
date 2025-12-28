@@ -14,12 +14,11 @@ def call_llm(messages):
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=messages,
-            timeout=30  # Add timeout to prevent hanging
+            timeout=30 
         )
         return response.choices[0].message.content
     
     except Exception as e:
-        # Log the actual error for debugging
         logger.error(f"LLM API error: {str(e)}")
         raise HTTPException(
             status_code=503,

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends,HTTPException, status
+from fastapi import FastAPI, Depends,HTTPException, status,Body
 from sqlalchemy.orm import Session
 from db import SessionLocal, engine
 from models import Base, Conversation, Message, DocumentChunk
@@ -41,10 +41,12 @@ def get_db():
         db.close()
 
 # Depends creates a Callable function while defining a logic inside a route
-# Session
+# Session package is imported from db
 @app.post("/conversations")
-def create_conversation(mode: str, db: Session = Depends(get_db)):
-    convo = Conversation(mode=mode)
+def create_conversation(mode: str = Body(...), db: Session = Depends(get_db)):
+    convo = Conversation(
+        mode=mode,
+    )
     db.add(convo)
     db.commit()
     db.refresh(convo)
@@ -157,6 +159,8 @@ def extract_text_from_pdf(file_path: str) -> str:
         text = ""
         for page in reader.pages:
             text += page.extract_text() or ""
+        text = text.replace('\x00', '')  
+        text = text.strip()
         return text
     except PdfReadError:
         raise HTTPException(status_code=400, detail="Invalid or corrupted PDF file")
@@ -165,6 +169,8 @@ def extract_text_from_pdf(file_path: str) -> str:
 
 @app.exception_handler(SQLAlchemyError)
 async def sqlalchemy_exception_handler(request, exc):
+    print(request)
+    print(exc)
     return JSONResponse(
         status_code=500,
         content={"detail": "Database error occurred"}
