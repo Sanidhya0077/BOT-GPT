@@ -1,5 +1,6 @@
 Lib/
 _pycache_/
 Scripts/
-.env/
-db.sql/
+.env
+db.sql
+pyvenv.cfg
