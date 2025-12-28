@@ -1,24 +1,60 @@
-Developer setup
+Here’s a **shorter, clean README** 👇
 
-This project uses a local virtual environment created in the project root (`conversational-ai`).
+---
 
-Quick start (PowerShell):
+# BOT GPT – Conversational AI Backend
 
-1. Activate the venv:
+Backend service for a **Conversational AI system** supporting:
 
-   .\Scripts\Activate.ps1
+- Open chat with an external LLM
+- Grounded (RAG) chat over uploaded PDFs
+- Persistent conversation history
 
-2. Install dependencies (already listed in `requirements.txt`):
+---
 
-   .\Scripts\pip.exe install -r requirements.txt
+## Tech Stack
 
-3. Run the FastAPI app (from project root):
+FastAPI · PostgreSQL · Groq (Llama) · SQLAlchemy · pypdf
 
-   .\Scripts\python.exe -m uvicorn main:app --reload
+---
 
-Notes
+## Features
 
-- If your editor (e.g. VS Code) doesn't resolve imports, point the Python interpreter to:
-  `c:\Users\pc\Downloads\Bot-consulting-Assignment\conversational-ai\Scripts\python.exe`.
-- The `requirements.txt` contains the packages the project expects (fastapi, uvicorn, python-dotenv, sqlalchemy, groq, pydantic).
-- `llm.py` expects the `GROQ_API_KEY` environment variable; add it to your system env or a `.env` file in the project root.
+- Multi-turn conversations
+- Open & document-grounded chat
+- PDF upload → text extraction → chunk retrieval
+- List, resume, and delete chats
+
+---
+
+## Run
+
+```bash
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+Open:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## Environment
+
+```env
+GROQ_API_KEY=your_key
+DATABASE_URL=postgresql://user:pass@localhost:5432/bot_gpt
+```
+
+---
+
+## Notes
+
+- Stateless REST APIs
+- Simple RAG (no vector DB)
+- Swagger used for testing
+
+---
