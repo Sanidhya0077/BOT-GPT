@@ -1,7 +1,5 @@
 ---
 
-# BOT GPT – Conversational AI Backend
-
 Backend service for a **Conversational AI system** supporting:
 
 * Open chat with an external LLM
