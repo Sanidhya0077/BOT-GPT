@@ -1,5 +1,3 @@
-Here’s a **shorter, clean README** 👇
-
 ---
 
 # BOT GPT – Conversational AI Backend
@@ -59,4 +57,3 @@ DATABASE_URL=postgresql://user:pass@localhost:5432/bot_gpt
 
 ---
 
-If you want it **even tighter (5–6 lines)**, say so.
