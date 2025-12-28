@@ -1,2 +1,5 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
-.conversational-ai/Lib
+Lib/
+_pycache_/
+Scripts/
+.env/
+db.sql/
