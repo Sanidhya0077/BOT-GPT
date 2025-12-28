@@ -1,6 +1,6 @@
 ---
 
-Backend service for a **Conversational AI system** supporting:
+Backend service for a supporting:
 
 * Open chat with an external LLM
 * Grounded (RAG) chat over uploaded PDFs
