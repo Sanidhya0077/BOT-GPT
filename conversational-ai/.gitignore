@@ -4,3 +4,4 @@ Scripts/
 .env
 db.sql
 pyvenv.cfg
+pyrenv.cfg
